@@ -1,5 +1,5 @@
 import pandas as pd
-
+"""
 # list of strings
 lst = ['Geeks', 'For', 'Geeks', 'is', 
             'portal', 'for', 'Geeks']
@@ -22,4 +22,18 @@ print("***\n"'{}\n'.format(df3))
 df3 = pd.DataFrame([[100, 110, 120],[120, 120, 130]])
 df4 = df.append(df3)
 print("****\n"'{}\n'.format(df4))
+"""
+
+
+data = {'Name':['Bertrand', 'Paul', 'Christian', 'Parfait'],
+        'Age':[27, 24, 22, 32],
+        'Address':['France', 'UK', 'USA', 'Morocco'],
+        'Qualification':['Msc', 'MBA', 'MCA', 'Phd']}
+ 
+# Convert the dictionary into DataFrame 
+df = pd.DataFrame(data)
+ 
+# select two columns
+print(df)
+print('\n', df[['Name', 'Qualification']])
 
