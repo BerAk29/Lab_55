@@ -37,3 +37,4 @@ df = pd.DataFrame(data)
 print(df)
 print('\n', df[['Name', 'Qualification']])
 
+help(pd.DataFrame)
