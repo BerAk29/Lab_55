@@ -61,9 +61,9 @@ with open('out2.txt', 'w') as f:
         for key, value in desc2.items():
             print(key, ':', value)
 
-        print(end='\n')
+        f.write('\n')
         for key, value in desc4.items():
-            print(key, ':', value)
+            f.write(key+' : '+value+'\n')  # this function take one string as argument
 
 
 """
@@ -78,4 +78,5 @@ with open('out2.txt', 'w') as f:
 import calendar as cal
 print('\n', cal.month(2021, 1, 2, 1))
 """
-
+with open("textfile.txt", "a+") as data:
+    data.write('\nFourth line added by Python')
