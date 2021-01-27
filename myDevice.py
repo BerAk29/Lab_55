@@ -51,7 +51,7 @@ with open('out.txt', 'w') as f:
 # Method 2 to redirect to a File
 from contextlib import redirect_stdout
 
-with open('out2.txt', 'w') as f:
+with open('out2.txt', 'wt') as f:
     with redirect_stdout(f):
         print(end='\n')
         for key, value in desc1.items():
@@ -77,6 +77,24 @@ with open('out2.txt', 'w') as f:
 
 import calendar as cal
 print('\n', cal.month(2021, 1, 2, 1))
+
+
+
+import errno
+
+try:
+    s = open("c:/users/user/Desktop/file.txt", "rt")
+    # Actual processing goes here.
+    s.close()
+except Exception as exc:
+    if exc.errno == errno.ENOENT:
+        print("The file doesn't exist.")
+    elif exc.errno == errno.EMFILE:
+        print("You've opened too many files.")
+    else:
+        print("The error number is:", exc.errno)
+
 """
 with open("textfile.txt", "a+") as data:
     data.write('\nFourth line added by Python')
+
