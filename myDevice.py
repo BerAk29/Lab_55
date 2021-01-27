@@ -18,7 +18,7 @@ class Switch(Router):
 
     def getdesc(self):
         """ return a description from information """
-        desc = {'Router Model': self.model, 
+        desc = {'Switch Model': self.model, 
                 'Software version': self.sw_version, 
                  'Management IP': self.ip_add}
         return desc
@@ -33,16 +33,43 @@ desc1 = rtr1.getdesc()
 desc2 = rtr2.getdesc()
 desc4 = sw1.getdesc()
 
-print(end='\n')
-for key, value in desc1.items():
-    print(key, ':', value)
-print(end='\n')
-for key, value in desc2.items():
-    print(key, ':', value)
+# Method 1 to redirect to a File
+with open('out.txt', 'w') as f:
+    print(end='\n', file=f)
+    for key, value in desc1.items():
+        print(key, ':', value, file=f)
 
-print(end='\n')
-for key, value in desc4.items():
-    print(key, ':', value)
+    print(end='\n', file=f)
+    for key, value in desc2.items():
+        print(key, ':', value, file=f)
+
+    print(end='\n', file=f)
+    for key, value in desc4.items():
+        print(key, ':', value, file=f)
+
+
+# Method 2 to redirect to a File
+from contextlib import redirect_stdout
+
+with open('out2.txt', 'w') as f:
+    with redirect_stdout(f):
+        print(end='\n')
+        for key, value in desc1.items():
+            print(key, ':', value)
+
+        print(end='\n')
+        for key, value in desc2.items():
+            print(key, ':', value)
+
+        print(end='\n')
+        for key, value in desc4.items():
+            print(key, ':', value)
+
+
+"""
+# Method 3 : Redirecting externally from the shell itself is another option, and often preferable:
+./script.py > out3.txt
+"""
 
 """
 #for item in desc1.items():

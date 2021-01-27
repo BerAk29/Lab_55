@@ -37,4 +37,10 @@ df = pd.DataFrame(data)
 print(df)
 print('\n', df[['Name', 'Qualification']])
 
-help(pd.DataFrame)
+
+from contextlib import redirect_stdout
+
+with open('help_out3.txt', 'w') as f:
+    with redirect_stdout(f):
+        help(pd.DataFrame)
+
