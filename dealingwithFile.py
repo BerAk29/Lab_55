@@ -1,3 +1,38 @@
+''' This script show how to work with txt and file, date, time modules '''
+''' Working on CSV File '''
+import csv
+#with open('datafile.csv','rt') as f:
+#  data = csv.reader(f)
+#  for row in data:
+#       print(row)
+
+''' Writing to CSV file input received '''
+
+print("Please add a new router to the list")
+hostname = input("What is the hostname? ")
+ip = input("What is the ip address? ")
+location = input("What is the location? ")
+router = [hostname, ip, location]
+with open("routerlist.csv", "a") as data:
+    csv_writer = csv.writer(data)
+    csv_writer.writerow(router)
+
+
+''' Other CSV file, read CSV & print as a list '''
+samplefile = open('routerlist.csv')
+samplereader = csv.reader(samplefile)
+sampledata = list(samplereader)
+
+for item in sampledata:
+    print(item)
+
+print('\n')
+print(sampledata)
+
+
+
+"""
+''' Dealing with text file'''
 from os import strerror
 
 try:
@@ -85,4 +120,69 @@ except IOError as e:
 	print("I/O error occurred: ", strerror(e.errno))
 
 
+'''The OS Module, dealing with the Operating System patch, folder etc...'''
+import os
 
+os.makedirs("my_first_directory/my_second_directory")
+os.chdir("my_first_directory")
+print(os.getcwd())
+os.chdir("my_second_directory")
+print(os.getcwd())
+
+
+os.mkdir("my_first_directory")
+print(os.listdir())
+os.rmdir("my_first_directory")
+print(os.listdir())
+
+
+''' Date and Time module'''
+from datetime import date
+from datetime import time
+import time
+
+today = date.today()
+
+print("Today:", today)
+print("Year:", today.year)
+print("Month:", today.month)
+print("Day:", today.day)
+
+
+timestamp = time.time()
+print("Timestamp:", timestamp)  # the value Timestamp: 1611786024.055511
+
+d = date.fromtimestamp(timestamp)
+print("Date:", d)  # the value Date: 2021-01-27
+
+timestamp = 1572879180
+print(time.ctime(timestamp))
+
+d = date(1991, 2, 5)
+print(d)  # 1991-02-05
+
+d = d.replace(year=1992, month=1, day=16)
+print(d)  # 1992-01-16
+
+
+
+
+t = time(14, 53, 20, 1)
+print("Time:", t)
+print("Hour:", t.hour)
+print("Minute:", t.minute)
+print("Second:", t.second)
+print("Microsecond:", t.microsecond)
+
+
+''' to sleep or wait for a moment '''
+
+class Student:
+    def take_nap(self, seconds):
+        print("I'm very tired. I have to take a nap. See you later.")
+        time.sleep(seconds)
+        print("I slept well! I feel great!")
+
+student = Student()
+student.take_nap(5)
+"""

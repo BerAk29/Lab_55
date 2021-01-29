@@ -33,7 +33,7 @@ desc1 = rtr1.getdesc()
 desc2 = rtr2.getdesc()
 desc4 = sw1.getdesc()
 
-# Method 1 to redirect to a File
+'''Method 1 to redirect to a File'''
 with open('out.txt', 'w') as f:
     print(end='\n', file=f)
     for key, value in desc1.items():
@@ -48,7 +48,7 @@ with open('out.txt', 'w') as f:
         print(key, ':', value, file=f)
 
 
-# Method 2 to redirect to a File
+''' Method 2 to redirect to a File'''
 from contextlib import redirect_stdout
 
 with open('out2.txt', 'wt') as f:
